@@ -261,6 +261,9 @@ class MainArgumentParser(object):
             self._add_input_file_arg(parser)
         if not 'output-file' in exclusions:
             self._add_output_file_arg(parser)
+        if not 'bootloader' in exclusions:
+            parser.add_argument('--bootloader', action='store_true',
+                                  help='app -> hash payload with SHA256. boot -> hash payload with SHA512' )
 
     def _addVerifyArgs(self, verify_parser, exclusions=[]):
         if not 'pretty-json' in exclusions:

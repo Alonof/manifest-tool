@@ -178,7 +178,12 @@ def get_payload_description(options, manifestInput):
 
         # Read payload input, record length and hash it
         payload_size = len(content)
-        payload_hash = utils.sha_hash(content)
+        if options.bootloader:
+            payload_hash = utils.sha_hash512(content)
+        else:
+            payload_hash = utils.sha_hash(content)
+
+
         LOG.debug('payload of {} bytes loaded. Hash: {}'.format(payload_size, binascii.b2a_hex(payload_hash)))
 
     # Ensure the cryptoMode is valid

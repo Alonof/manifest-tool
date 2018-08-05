@@ -55,6 +55,11 @@ def sha_hash(content):
     sha.update(content)
     return sha.digest()
 
+def sha_hash512(content):
+    sha = hashlib.sha512()
+    sha.update(content)
+    return sha.digest()
+
 def getDevicePSK_HKDF(mode, masterKey, vendorId, classId, keyUsage):
     # Construct the device PSK
     # Device UUID is the IKM.
